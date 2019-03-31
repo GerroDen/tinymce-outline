@@ -1,0 +1,17 @@
+{
+  "name": "tinymce-outline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lars-Erik Kimmel <gerro_den@gmx.de>",
+  "license": "MIT",
+  "dependencies": {
+    "tinymce": "^4.9.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
