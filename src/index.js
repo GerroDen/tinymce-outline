@@ -1,6 +1,12 @@
 import "./style.less";
 import tinymce from "tinymce";
 
+function isInViewport(element) {
+	const { top, bottom } = element.getBoundingClientRect();
+	const vHeight = element.ownerDocument.documentElement.clientHeight;
+	return (top > 0 || bottom > 0) && top < vHeight;
+}
+
 function buildOutline(editor) {
 	const outline = editor.dom.create("ul", { class: "tinymce-outline" });
 	editor.$("h1, h2, h3, h4, h5, h6").each((index, element) => {
@@ -8,7 +14,10 @@ function buildOutline(editor) {
 			outline,
 			"li",
 			{
-				class: "tinymce-outline-" + element.tagName.toLowerCase(),
+				class: [
+					"tinymce-outline-" + element.tagName.toLowerCase(),
+					isInViewport(element) ? "is-visible" : ""
+				].join(" "),
 				title: element.innerText
 			},
 			element.innerText
@@ -33,6 +42,12 @@ function updateSidebarPanel(editor) {
 tinymce.PluginManager.add("outline", editor => {
 	editor.on("Init", () => {
 		editor.dom.loadCSS("main.css");
+		editor
+			.getWin()
+			.addEventListener(
+				"scroll",
+				tinymce.util.Delay.debounce(() => updateSidebarPanel(editor), 10)
+			);
 	});
 	editor.addSidebar("mysidebar", {
 		tooltip: "My sidebar",
@@ -46,5 +61,5 @@ tinymce.PluginManager.add("outline", editor => {
 	});
 	editor.on("Change", () => {
 		updateSidebarPanel(editor);
-	})
+	});
 });
