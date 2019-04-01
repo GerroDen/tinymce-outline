@@ -13,22 +13,38 @@ function buildOutline(editor) {
 			},
 			element.innerText
 		);
-		li.addEventListener("click", function() {
+		li.addEventListener("click", () => {
 			element.scrollIntoView({ behavior: "smooth" });
 		});
 	});
 	return outline;
 }
 
-tinymce.PluginManager.add("outline", function(editor) {
+let sidebarPanel;
+
+function updateSidebarPanel(editor) {
+	const outline = buildOutline(editor);
+	while (sidebarPanel.firstChild) {
+		sidebarPanel.removeChild(sidebarPanel.firstChild);
+	}
+	editor.dom.add(sidebarPanel, outline);
+}
+
+tinymce.PluginManager.add("outline", editor => {
+	editor.on("Init", () => {
+		editor.dom.loadCSS("main.css");
+	});
 	editor.addSidebar("mysidebar", {
 		tooltip: "My sidebar",
 		icon: "settings",
 		onrender(api) {
-			const outline = buildOutline(editor);
-			editor.dom.add(api.element(), outline);
+			sidebarPanel = api.element();
+			updateSidebarPanel(editor);
 		},
 		onshow(api) {},
 		onhide(api) {}
 	});
+	editor.on("Change", () => {
+		updateSidebarPanel(editor);
+	})
 });
