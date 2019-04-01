@@ -8,7 +8,8 @@ function buildOutline(editor) {
 			outline,
 			"li",
 			{
-				class: "tinymce-outline-" + element.tagName.toLowerCase()
+				class: "tinymce-outline-" + element.tagName.toLowerCase(),
+				title: element.innerText
 			},
 			element.innerText
 		);
