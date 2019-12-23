@@ -6,33 +6,33 @@
 	"author": "Lars-Erik Kimmel <gerro_den@gmx.de>",
 	"license": "MIT",
 	"dependencies": {
-		"@babel/runtime": "^7.4.2"
+		"@babel/runtime": "^7.7.7"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.4.0",
+		"@babel/core": "^7.7.7",
 		"@babel/plugin-transform-runtime": "^7.4.0",
-		"@babel/plugin-transform-strict-mode": "^7.2.0",
-		"@babel/preset-env": "^7.4.2",
-		"babel-loader": "^8.0.5",
+		"@babel/plugin-transform-strict-mode": "^7.7.4",
+		"@babel/preset-env": "^7.7.7",
+		"babel-loader": "^8.0.6",
 		"css-hot-loader": "^1.4.4",
-		"css-loader": "^2.1.1",
-		"eslint": "^5.16.0",
-		"html-webpack-include-assets-plugin": "^1.0.7",
+		"css-loader": "^3.4.0",
+		"eslint": "^6.8.0",
+		"html-webpack-tags-plugin": "^2.0.17",
 		"html-webpack-plugin": "^3.2.0",
-		"less": "^3.9.0",
-		"less-loader": "^4.1.0",
-		"mini-css-extract-plugin": "^0.5.0",
-		"style-loader": "^0.23.1",
+		"less": "^3.10.3",
+		"less-loader": "^5.0.0",
+		"lodash": "^4.17.15",
+		"mini-css-extract-plugin": "^0.9.0",
+		"style-loader": "^1.1.1",
 		"tinymce": "^4.9.4",
-		"webpack": "^4.29.6",
-		"webpack-cli": "^3.3.0",
-		"webpack-dev-server": "^3.2.1",
-		"webpack-merge": "^4.2.1"
+		"webpack": "^4.41.4",
+		"webpack-cli": "^3.3.10",
+		"webpack-dev-server": "^3.10.1",
+		"webpack-merge": "^4.2.2"
 	},
 	"scripts": {
 		"build": "webpack --config webpack.conf.js",
-		"start:dev": "webpack-dev-server --hot --config webpack.dev.conf.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start:dev": "webpack-dev-server --hot --config webpack.dev.conf.js"
 	},
 	"private": true
 }
