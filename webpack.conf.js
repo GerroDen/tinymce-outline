@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlWebpackIncludeAssetsPlugin = require("html-webpack-include-assets-plugin");
+const HtmlWebpackTagsPlugin  = require("html-webpack-tags-plugin");
 
 module.exports = function(env) {
 	env = env || {};
@@ -14,12 +14,12 @@ module.exports = function(env) {
 				filename: "demo.html",
 				template: "test/demo.html"
 			}),
-			new HtmlWebpackIncludeAssetsPlugin({
-				assets: ["tinymce/tinymce.js"],
+			new HtmlWebpackTagsPlugin({
+				tags: ["tinymce/tinymce.js"],
 				append: false
 			}),
-			new HtmlWebpackIncludeAssetsPlugin({
-				assets: ["demo.js"],
+			new HtmlWebpackTagsPlugin({
+				tags: ["demo.js"],
 				append: true
 			})
 		],

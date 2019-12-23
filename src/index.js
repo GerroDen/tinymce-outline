@@ -2,6 +2,7 @@ import "./style.less";
 import tinymce from "tinymce";
 import Outline from "./outline";
 
+console.log(tinymce);
 tinymce.PluginManager.add("outline", editor => {
 	editor.on("Init", () => {
 		editor.dom.loadCSS("main.css");
